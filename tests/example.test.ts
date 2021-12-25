@@ -19,7 +19,7 @@ test('Clicking on elements', async ({ page }) => {
 })
 
 test.describe('Some test suite', () => {
-  test('Working with inputs', async ({ page }) => {
+  test('Working with inputs @myTag', async ({ page }) => {
     await page.goto('http://zero.webappsecurity.com/index.html')
     await page.click('#signin_button')
     await page.type('#user_login', 'wrong_username')
@@ -31,7 +31,7 @@ test.describe('Some test suite', () => {
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
   })
 
-  test('Asseetions', async ({ page }) => {
+  test('Asseetions @myTag', async ({ page }) => {
     await page.goto('https://example.com')
 
     await expect(page).toHaveURL('https://example.com')
@@ -48,3 +48,9 @@ test.describe('Some test suite', () => {
     await expect(nonExistingElement).not.toBeVisible()
   })
 })
+
+// The way to run all tests with tag:
+// npx playwright test --grep @myTag
+
+// The way to run all tests w/o tag:
+// npx playwright test --grep-invert @myTag
