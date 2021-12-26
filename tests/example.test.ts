@@ -55,15 +55,17 @@ test.describe('Some test suite', () => {
 // The way to run all tests w/o tag:
 // npx playwright test --grep-invert @myTag
 
-test.skip('Screenshots', async ({ page }) => {
-  await page.goto('https://example.com/')
-  await page.screenshot({ path: 'screenshot.png', fullPage: true })
-})
+test.describe.only('Hooks', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://example.com/')
+  })
+  test('Screenshots', async ({ page }) => {
+    await page.screenshot({ path: 'screenshot.png', fullPage: true })
+  })
 
-test.skip('Single element screenshot', async ({ page }) => {
-  await page.goto('https://example.com/')
+  test('Single element screenshot', async ({ page }) => {
+    const element = page.locator('h1')
 
-  const element = page.locator('h1')
-
-  await element.screenshot({ path: 'element_screenshot.png' })
+    await element.screenshot({ path: 'element_screenshot.png' })
+  })
 })
