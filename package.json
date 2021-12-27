@@ -6,7 +6,8 @@
   "scripts": {
     "test:chrome": "npx playwright test --project=Chromium",
     "test:firefox": "npx playwright test --project=Firefox",
-    "test:webkit": "npx playwright test --project=Webkit"
+    "test:webkit": "npx playwright test --project=Webkit",
+    "test:e2e": "npx playwright test --config=e2e.config.ts --project=Chromium"
   },
   "author": "Denis Sitnikov",
   "license": "ISC",
