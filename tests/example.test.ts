@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { loadHomepage, assertTitle } from '../helpers'
 
 test.skip('Simple basic test', async ({ page }) => {
   await page.goto('https://example.com')
@@ -55,7 +56,7 @@ test.describe('Some test suite', () => {
 // The way to run all tests w/o tag:
 // npx playwright test --grep-invert @myTag
 
-test.describe.only('Hooks', () => {
+test.describe('Hooks', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://example.com/')
   })
@@ -68,4 +69,9 @@ test.describe.only('Hooks', () => {
 
     await element.screenshot({ path: 'element_screenshot.png' })
   })
+})
+
+test.only('Custom helpers', async ({ page }) => {
+  await loadHomepage(page)
+  await assertTitle(page)
 })
