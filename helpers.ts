@@ -3,5 +3,5 @@ export async function loadHomepage(page) {
 }
 
 export async function assertTitle(page) {
-  await page.waitForSelector('h1')
+  await page.waitForSelector('h5')
 }
