@@ -5,7 +5,7 @@ test.describe('Feedback form', () => {
     await page.goto('http://zero.webappsecurity.com/index.html')
     await page.click('#feedback')
   })
-  // Reset feedback form
+
   test('Reset feedback form', async ({ page }) => {
     await page.type('#name', 'Ivan')
     await page.type('#email', 'test@mail.com')
@@ -19,5 +19,13 @@ test.describe('Feedback form', () => {
     await expect(nameInput).toBeEmpty()
     await expect(commentInput).toBeEmpty()
   })
-  // Submit reset form
+
+  test('Submit reset form', async ({ page }) => {
+    await page.type('#name', 'Ivan')
+    await page.type('#email', 'test@mail.com')
+    await page.type('#subject', 'Isue')
+    await page.type('#comment', 'Some comment')
+    await page.click('input[name=submit]')
+    await page.waitForSelector('#feedback-title')
+  })
 })
