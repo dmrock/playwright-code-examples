@@ -1,10 +1,15 @@
 import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page-objects/LoginPage'
 
-test.describe.parallel('Login / Logout flow', () => {
+test.describe.parallel.only('Login / Logout flow', () => {
+  let loginPage: LoginPage
+
   // Befor hook
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://zero.webappsecurity.com/')
+    loginPage = new LoginPage(page)
+    await loginPage.visit()
   })
+
   // Negative scenario
   test('Negative scenario for login', async ({ page }) => {
     await page.click('#signin_button')
@@ -16,6 +21,7 @@ test.describe.parallel('Login / Logout flow', () => {
 
     await expect(errorMessage).toContainText('Login and/or password are wrong')
   })
+
   // Positive scenario + Logout
   test('Positive scenario for login and logout', async ({ page }) => {
     await page.click('#signin_button')
