@@ -1,13 +1,20 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from '../../page-objects/HomePage'
+import { LoginPage } from '../../page-objects/LoginPage'
 
 test.describe('New payment', () => {
+  let homePage: HomePage
+  let loginPage: LoginPage
+
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://zero.webappsecurity.com/')
-    await page.click('#signin_button')
-    await page.type('#user_login', 'username')
-    await page.type('#user_password', 'password')
-    await page.click('text=Sign in')
+    homePage = new HomePage(page)
+    loginPage = new LoginPage(page)
+
+    homePage.visit()
+    homePage.clickOnSignIn()
+    loginPage.login('username', 'password')
   })
+
   test('Should send new payment', async ({ page }) => {
     await page.click('#pay_bills_tab')
     await page.selectOption('#sp_payee', 'apple')
