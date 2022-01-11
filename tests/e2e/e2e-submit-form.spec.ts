@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { HomePage } from '../../page-objects/HomePage'
-import { FeedbackPage } from '../../page-objects/FeedbackPage'
+import { HomePage } from '../../pages/HomePage'
+import { FeedbackPage } from '../../pages/FeedbackPage'
 
 test.describe('Feedback form', () => {
   let homePage: HomePage
