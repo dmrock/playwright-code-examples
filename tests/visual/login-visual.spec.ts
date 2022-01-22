@@ -2,7 +2,7 @@ import { test } from '@playwright/test'
 import { HomePage } from '../../pages/HomePage'
 import { LoginPage } from '../../pages/LoginPage'
 
-test.describe.only('Login page visual test', () => {
+test.describe('Login page visual test', () => {
   let homepage: HomePage
   let loginpage: LoginPage
 

@@ -7,7 +7,9 @@
     "test:chrome": "npx playwright test --project=Chromium",
     "test:firefox": "npx playwright test --project=Firefox",
     "test:webkit": "npx playwright test --project=Webkit",
-    "test:e2e": "npx playwright test --config=e2e.config.ts --project=Chromium"
+    "test:e2e": "npx playwright test --config=e2e.config.ts --project=Chromium",
+    "test:visual": "npx playwright test --config=visual.config.ts",
+    "test:visual:update": "npx playwright test --config=visual.config.ts --update-snapshots"
   },
   "author": "Denis Sitnikov",
   "license": "ISC",
