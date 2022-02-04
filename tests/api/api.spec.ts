@@ -26,7 +26,7 @@ test.describe.parallel('API testing', () => {
     expect(responseBody.data.last_name).toBe('Bluth')
   })
 
-  test.only('POST request - create new user', async ({ request }) => {
+  test('POST request - create new user', async ({ request }) => {
     const response = await request.post(`${baseUrl}/users`, {
       data: {
         id: 2000,
@@ -34,7 +34,33 @@ test.describe.parallel('API testing', () => {
     })
     const responseBody = JSON.parse(await response.text())
 
+    expect(response.status()).toBe(201)
     expect(responseBody.id).toBe(2000)
     expect(responseBody.createdAt).toBeTruthy()
+  })
+
+  test('POST request - login', async ({ request }) => {
+    const response = await request.post(`${baseUrl}/login`, {
+      data: {
+        email: 'eve.holt@reqres.in',
+        password: 'cityslicka',
+      },
+    })
+    const responseBody = JSON.parse(await response.text())
+
+    expect(response.status()).toBe(200)
+    expect(responseBody.token).toBeTruthy()
+  })
+
+  test('POST request - login fail', async ({ request }) => {
+    const response = await request.post(`${baseUrl}/login`, {
+      data: {
+        email: 'peter@klaven',
+      },
+    })
+    const responseBody = JSON.parse(await response.text())
+
+    expect(response.status()).toBe(400)
+    expect(responseBody.error).toBe('Missing password')
   })
 })
