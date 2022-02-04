@@ -63,4 +63,19 @@ test.describe.parallel('API testing', () => {
     expect(response.status()).toBe(400)
     expect(responseBody.error).toBe('Missing password')
   })
+
+  test('PUT request - update user', async ({ request }) => {
+    const respons = await request.put(`${baseUrl}/users/2`, {
+      data: {
+        name: 'Jhon',
+        job: 'QA Engineer',
+      },
+    })
+    const responseBody = JSON.parse(await respons.text())
+
+    expect(respons.status()).toBe(200)
+    expect(responseBody.name).toBe('Jhon')
+    expect(responseBody.job).toBe('QA Engineer')
+    expect(responseBody.updatedAt).toBeTruthy()
+  })
 })
