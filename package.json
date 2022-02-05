@@ -10,7 +10,7 @@
     "test:e2e": "npx playwright test --config=e2e.config.ts --project=Chromium",
     "test:visual": "npx playwright test --config=visual.config.ts",
     "test:visual:update": "npx playwright test --config=visual.config.ts --update-snapshots",
-    "test:api": "npx playwright test --config=api.config.ts --project=Chromium"
+    "test:api": "npx playwright test --config=api.config.ts --project=Chromium --reporter=list"
   },
   "author": "Denis Sitnikov",
   "license": "ISC",
