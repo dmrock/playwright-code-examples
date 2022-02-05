@@ -71,7 +71,7 @@ test.describe('Hooks', () => {
   })
 })
 
-test.only('Custom helpers', async ({ page }) => {
+test('Custom helpers', async ({ page }) => {
   await loadHomepage(page)
   await assertTitle(page)
 })
