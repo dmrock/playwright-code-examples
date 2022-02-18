@@ -16,7 +16,7 @@
   "author": "Denis Sitnikov",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.17.1",
+    "@playwright/test": "^1.19.1",
     "prettier": "^2.5.1"
   }
 }

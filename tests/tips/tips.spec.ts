@@ -6,7 +6,7 @@ test.describe('Tips & tricks section', () => {
     console.log(testInfo.status)
   })
 
-  test.only('Skip browser', async ({ page, browserName }) => {
+  test('Skip browser', async ({ page, browserName }) => {
     test.skip(browserName === 'chromium', 'Feature not implemented')
     await page.goto('https://www.example.com')
   })
