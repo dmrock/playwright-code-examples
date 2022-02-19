@@ -15,4 +15,13 @@ test.describe('Tips & tricks section', () => {
     test.fixme(browserName === 'chromium', 'Test is not stable, needs revision')
     await page.goto('https://www.example.com')
   })
+
+  const people = ['Mike', 'Jhon', 'Peter', 'Alice', 'Bob']
+  for (const name of people) {
+    test(`Running test for ${name}`, async ({ page }) => {
+      await page.goto('http://zero.webappsecurity.com/index.html')
+      await page.type('#searchTerm', `${name}`)
+      await page.waitForTimeout(3000)
+    })
+  }
 })
