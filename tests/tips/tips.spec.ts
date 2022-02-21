@@ -32,4 +32,15 @@ test.describe('Tips & tricks section', () => {
     await page.mouse.move(100, 200)
     await page.mouse.up()
   })
+
+  test('Multiple browser tabs inside one browser', async ({ browser }) => {
+    const context = await browser.newContext()
+    const page1 = await context.newPage()
+    const page2 = await context.newPage()
+    const page3 = await context.newPage()
+    await page1.goto('https://www.example.com')
+    await page2.goto('https://www.example.com')
+    await page3.goto('https://www.example.com')
+    await page1.waitForTimeout(5000)
+  })
 })
